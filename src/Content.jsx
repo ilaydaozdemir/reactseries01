@@ -12,10 +12,16 @@ const Content = () => {
   const handleClick = () => {
     console.log("clicked");
   };
+
+  //add click event with paramater
+  const handleClick2 = (name) => {
+    console.log(`${name} was clicked`);
+  };
   return (
     <main>
       <p>Hello {handleNameChange()}</p>
       <button onClick={handleClick}>Click it</button>
+      <button onClick={() => handleClick2("ilayda")}>Click it</button>
     </main>
   );
 };
