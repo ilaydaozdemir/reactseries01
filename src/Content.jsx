@@ -2,14 +2,14 @@ import React from "react";
 import { useState } from "react";
 
 const Content = () => {
-  //how to use useStateHook basic
+  //how to use useStateHook basic-1
   const [name, setName] = useState("Harun");
 
   //add arrow function with jsx
   const handleNameChange = () => {
     const names = ["Bob", "Kevin", "Jack"];
     const int = Math.floor(Math.random() * 3);
-    return names[int];
+    setName(names[int]);
   };
 
   //add click event
@@ -28,7 +28,7 @@ const Content = () => {
   return (
     <main>
       <p onDoubleClick={handleClick}>Hello {name}</p>
-      <button onClick={handleClick}>Click it</button>
+      <button onClick={handleNameChange}>Click name change</button>
       <button onClick={() => handleClick2("ilayda")}>Click it</button>
       <button onClick={(e) => handleClick3(e)}>Click it</button>
     </main>
