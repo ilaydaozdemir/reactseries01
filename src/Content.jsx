@@ -2,35 +2,37 @@ import React from "react";
 import { useState } from "react";
 
 const Content = () => {
-  //how to use useStateHook basic-1
-  const [name, setName] = useState("Harun");
+  //useStateHooks with array
+  const [items, setItems] = useState([
+    {
+      id: 1,
+      checked: false,
+      item: "One half pound bag of Cocoa Covered Almonds Unsalted",
+    },
+    {
+      id: 2,
+      checked: false,
+      item: "Item 2",
+    },
+    {
+      id: 3,
+      checked: false,
+      item: "Item 3",
+    },
+  ]);
 
-  //add arrow function with jsx
-  const handleNameChange = () => {
-    const names = ["Bob", "Kevin", "Jack"];
-    const int = Math.floor(Math.random() * 3);
-    setName(names[int]);
-  };
-
-  //add click event
-  const handleClick = () => {
-    console.log("clicked");
-  };
-
-  //add click event with paramater
-  const handleClick2 = (name) => {
-    console.log(`${name} was clicked`);
-  };
-  //add click event e
-  const handleClick3 = (e) => {
-    console.log(e.target.innerText);
-  };
   return (
     <main>
-      <p onDoubleClick={handleClick}>Hello {name}</p>
-      <button onClick={handleNameChange}>Click name change</button>
-      <button onClick={() => handleClick2("ilayda")}>Click it</button>
-      <button onClick={(e) => handleClick3(e)}>Click it</button>
+        {/*Lists of elements need keys*/}
+      <ul>
+        {items.map((item) => (
+          <li className="item" key={item.id}>
+            <input type="checkbox" checked={item.checked} />
+            <label>{item.item}</label>
+            <button>Delete</button>
+          </li>
+        ))}
+      </ul>
     </main>
   );
 };
