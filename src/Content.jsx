@@ -24,13 +24,21 @@ const Content = () => {
     },
   ]);
 
+  //adding onChange listener
+  const handleCheck = (id) => {
+    console.log(`key:${id}`);
+  };
   return (
     <main>
       {/*Lists of elements need keys*/}
       <ul>
         {items.map((item) => (
           <li className="item" key={item.id}>
-            <input type="checkbox" checked={item.checked} />
+            <input
+              type="checkbox"
+              onChange={() => handleCheck(item.id)}
+              checked={item.checked}
+            />
             <label>{item.item}</label>
             <FaTrashAlt role="button" tabIndex="0" />
           </li>
