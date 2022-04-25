@@ -22,6 +22,10 @@ function App() {
       item: "Item 3",
     },
   ]);
+
+  //add item
+  const [newItem, setNewItem] = useState("")
+
   const handleCheck = (id) => {
     const listItems = items.map((item) =>
       item.id === id ? { ...item, checked: !item.checked } : item
@@ -36,11 +40,23 @@ function App() {
 
     localStorage.setItem("shoppinglist", JSON.stringify(listItems));
   };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!newItem) return;
+    console.log(newItem)
+
+    //add item
+    setNewItem('');
+  }
 
   return (
     <div className="App">
       <Header title="Shopping List" />
-      <AddItem />
+      <AddItem
+        newItem={newItem}
+        setNewItem={setNewItem}
+        handleSubmit={handleSubmit}
+      />
       <Content
         items={items}
         handleCheck={handleCheck}
