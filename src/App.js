@@ -6,7 +6,8 @@ import AddItem from './AddItem';
 import SeachItem from './SeachItem';
 
 function App() {
-  const [items, setItems] = useState(JSON.parse(localStorage.getItem('shoppinglist')) || []);
+  const API_URL = "http://localhost:3500/items"
+  const [items, setItems] = useState([]);
 
   //add item
   const [newItem, setNewItem] = useState("")
@@ -15,8 +16,18 @@ function App() {
   const [search, setSearch] = useState('')
 
   useEffect(() => {
-    localStorage.setItem("shoppinglist", JSON.stringify(items));
-  }, [items])
+    const fetchItems = async () => {
+      try {
+        const response = await fetch(API_URL);
+        const listItems = await response.json();
+        console.log(listItems);
+        setItems(listItems)
+      } catch (err) {
+        console.log(err.stack)
+      }
+    }
+    (async () => await fetchItems())();
+  }, [])
 
 
 
