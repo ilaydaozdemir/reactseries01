@@ -6,24 +6,30 @@ import AddItem from './AddItem';
 import SeachItem from './SeachItem';
 
 function App() {
-  const API_URL = "http://localhost:3500/items"
+  const API_URL = "http://localhost:3500/itemss"
   const [items, setItems] = useState([]);
 
   //add item
-  const [newItem, setNewItem] = useState("")
+  const [newItem, setNewItem] = useState("");
 
   //add search
-  const [search, setSearch] = useState('')
+  const [search, setSearch] = useState('');
+
+  const [fetchError, setFetchError] = useState(null);
 
   useEffect(() => {
     const fetchItems = async () => {
       try {
         const response = await fetch(API_URL);
+        console.log("response", response)
+        if (!response.ok) throw Error('Did not received expected data');
         const listItems = await response.json();
         console.log(listItems);
         setItems(listItems)
+        setFetchError(null)
       } catch (err) {
-        console.log(err.stack)
+        console.log("hata", err.message)
+        setFetchError(err.message)
       }
     }
     (async () => await fetchItems())();
