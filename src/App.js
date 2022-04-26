@@ -21,14 +21,14 @@ function App() {
     const fetchItems = async () => {
       try {
         const response = await fetch(API_URL);
-        console.log("response", response)
-        if (!response.ok) throw Error('Did not received expected data');
+
+        if (!response.ok) throw Error('Did not receive expected data');
         const listItems = await response.json();
         console.log(listItems);
         setItems(listItems)
         setFetchError(null)
       } catch (err) {
-        console.log("hata", err.message)
+
         setFetchError(err.message)
       }
     }
@@ -73,11 +73,14 @@ function App() {
         search={search}
         setSearch={setSearch}
       />
-      <Content
-        items={items.filter(item => ((item.item).toLowerCase()).includes(search.toLocaleLowerCase()))}
-        handleCheck={handleCheck}
-        handleDelete={handleDelete}
-      />
+      <main>
+        {fetchError && <p style={{ color: "red" }}>{`Error:${fetchError}`}</p>}
+        {!fetchError && <Content
+          items={items.filter(item => ((item.item).toLowerCase()).includes(search.toLocaleLowerCase()))}
+          handleCheck={handleCheck}
+          handleDelete={handleDelete}
+        />}
+      </main>
       <Footer length={items.length} />
     </div>
   );
