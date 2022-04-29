@@ -24,14 +24,14 @@ body {
   height: 100vh;
   width: 100%;
   max-width: 500px;
-  border: 1px solid mediumblue;
+  border: 1px solid rgb(68, 68, 186);
   margin: auto;
 }
 
 header {
   width: 100%;
   padding: 0 0.25em;
-  background-color: mediumblue;
+  background-color: rgb(68, 68, 186);
   color: aliceblue;
   display: flex;
   justify-content: space-between;
@@ -51,7 +51,7 @@ main {
 footer {
   width: 100%;
   padding: 0.25em;
-  background-color: mediumblue;
+  background-color: rgb(68, 68, 186);
   color: aliceblue;
   display: grid;
   place-content: center;
@@ -112,7 +112,7 @@ ul li::before {
 
 .item svg:focus,
 .item svg:hover {
-  color: red;
+  color: rgb(206, 76, 76);
   outline: none;
 }
 
@@ -148,14 +148,14 @@ button {
   padding: 0.5rem;
   font-size: 1rem;
   background-color: aliceblue;
-  color: mediumblue;
+  color: rgb(67, 67, 202);
   cursor: pointer;
 }
 
 button:focus,
 button:hover {
   color: white;
-  background-color: limegreen;
+  background-color: rgb(84, 180, 84);
   outline: none;
 }
 
